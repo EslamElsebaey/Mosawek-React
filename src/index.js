@@ -14,8 +14,8 @@ import { BrowserRouter, HashRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
+  <HashRouter>
      <App />
-  </BrowserRouter>
+  </HashRouter>
 );
 
