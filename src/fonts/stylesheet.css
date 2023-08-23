@@ -1,0 +1,80 @@
+@font-face {
+    font-family: 'Cairo';
+    src: url('Cairo-ExtraBold.woff2') format('woff2'),
+        url('Cairo-ExtraBold.woff') format('woff'),
+        url('Cairo-ExtraBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('Cairo-Bold.woff2') format('woff2'),
+        url('Cairo-Bold.woff') format('woff'),
+        url('Cairo-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('Cairo-Black.woff2') format('woff2'),
+        url('Cairo-Black.woff') format('woff'),
+        url('Cairo-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('Cairo-Medium.woff2') format('woff2'),
+        url('Cairo-Medium.woff') format('woff'),
+        url('Cairo-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('Cairo-Light.woff2') format('woff2'),
+        url('Cairo-Light.woff') format('woff'),
+        url('Cairo-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('Cairo-ExtraLight.woff2') format('woff2'),
+        url('Cairo-ExtraLight.woff') format('woff'),
+        url('Cairo-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('Cairo-Regular.woff2') format('woff2'),
+        url('Cairo-Regular.woff') format('woff'),
+        url('Cairo-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('Cairo-SemiBold.woff2') format('woff2'),
+        url('Cairo-SemiBold.woff') format('woff'),
+        url('Cairo-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+

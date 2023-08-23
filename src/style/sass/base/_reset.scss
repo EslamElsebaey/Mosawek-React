@@ -1,0 +1,19 @@
+.showToTop {
+    opacity: 1;
+    visibility: visible;
+}
+
+.rotate-select-icon::after{
+    transform: translateY(-50%) rotate(180deg) !important; 
+}
+
+.icon-rotate::after{
+    transform:  rotate(180deg)  !important;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+.open-search{
+    display: block;
+}

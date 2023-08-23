@@ -1,0 +1,531 @@
+.register-content{
+background-color: #ffffff;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 40px 20px 60px 20px;
+}
+.register-form-content{
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.register-section , .login-section , .forgetPass-section , .codeConfirm-section{
+    padding: 0 0 40px 0;
+}
+
+
+.CodeConfirm-btn{
+    margin-top: 20px;
+     background-color:  #664229 ;
+     &:hover{
+        background-color: #b99976;
+     }
+}
+.spinner{
+    animation: spinning 1.5s linear  infinite ;
+    margin-right: 10px;
+}
+@keyframes spinning {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.Toastify__toast-body{
+    align-items: flex-start;
+    padding: 20px;
+}
+.toast-text-h3{
+    color: #07bc0c;
+    margin: 0;
+    margin-left: 10px;
+    font-size: 20px;
+}
+.toast-text-box{
+    text-align: center;
+}
+.Toastify__toast-container{
+    width: 35%;
+}
+.Toastify--animate-icon{
+    display: none;
+}
+
+
+// *******************************************************************************
+
+
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 25px;
+    height: 25px;
+  }
+  .lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    margin: 0px;
+    border: 4px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+  }
+  .lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+  .lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  .lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+  @keyframes lds-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+
+
+
+  .loading-container {
+    margin-top: -134px;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .lds-ripple {
+        display: inline-block;
+        position: relative;
+        width: 80px;
+        height: 80px;
+        div {
+            position: absolute;
+            border: 4px solid #664229;
+            opacity: 1;
+            border-radius: 50%;
+            animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+        }
+    }
+    .lds-ripple div:nth-child(2) {
+        animation-delay: -0.5s;
+    }
+    
+}
+@keyframes lds-ripple {
+    0% {
+        top: 36px;
+        left: 36px;
+        width: 0;
+        height: 0;
+        opacity: 0;
+   }
+    4.9% {
+        top: 36px;
+        left: 36px;
+        width: 0;
+        height: 0;
+        opacity: 0;
+   }
+    5% {
+        top: 36px;
+        left: 36px;
+        width: 0;
+        height: 0;
+        opacity: 1;
+   }
+    100% {
+        top: 0px;
+        left: 0px;
+        width: 72px;
+        height: 72px;
+        opacity: 0;
+   }
+}
+
+
+
+
+.css-1fdsijx-ValueContainer{
+    padding: 0 !important;
+    padding-inline-start: 15px !important;
+}
+.css-qbdosj-Input{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.myform{
+    display: block;
+    width: 100%;
+    margin-top: 35px;
+    .myLabel {
+        color: #664229;
+        font-weight: 700;
+        display: block;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    .myInput {
+        width: 100%;
+        height: 45px;
+        border-radius: 25px;
+        background-color: #f2f2f2;
+        padding: 0 20px;
+        border: none;
+        &:focus{
+            outline: none;
+            border: 1px solid $main-color;
+        }
+    }
+    .mytextarea{
+        border-radius: 25px;
+        background-color: #f2f2f2;
+        width: 100%;
+        border: none;
+        height: 100px !important;
+        resize: none;
+        padding: 10px 20px;
+        &:focus{
+            outline: none;
+            border: 1px solid $main-color;
+        }
+    }
+}
+// .general-input{
+//     margin-bottom: 15px;
+// }
+
+.checkmark{
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #f4f5f6;
+    border: 1px solid #e3e4e6;
+    position: relative;
+    margin-inline-end: 8px;
+    display: inline-block;
+    &::after{
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #b99976;
+        content: "";
+        position: absolute;
+        display: none;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) ;
+    }
+    
+}
+
+input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.general-input-div{
+    margin-top: 15px;
+}
+
+.radio-div{
+    label{
+        font-size: 14px;
+        color: #664229;
+        margin-bottom: 0;
+        font-weight: 600;
+      
+        display: inline-flex;
+        align-items: center;
+      
+        cursor: pointer;
+    }
+    input , input[type="checkbox"]{
+        opacity: 0;
+        appearance: none;
+    }
+}
+input[type="checkbox"]{
+    opacity: 0;
+    appearance: none;
+}
+.number-input-holder{
+    position: relative;
+    .general-input{
+        padding-inline-end: 90px;
+    }
+}
+.img-key-holder{
+  
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    inset-inline-end: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span{
+        font-size: 14px;
+        color: #664229;
+        font-weight: 600;
+    }
+    img{
+        margin-inline-start: 5px;
+    }
+}
+
+.checkbox-checkmark{
+    width: 16px;
+    height: 16px;
+    background-color: #f4f5f6;
+    border: 1px solid #e3e4e6;
+    position: relative;
+    margin-inline-end: 8px;
+    display: inline-block;
+    &::after{
+        content: "\f00c";
+        position: absolute;
+        font-family: "line Awesome free";
+        font-weight: 900;
+        display: none;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) ;
+       font-size: 12px;
+       color: #fff;
+        // border: solid #fff;
+        // border-width: 0 3px 3px 0;
+    }
+}
+
+input:checked ~ .checkbox-checkmark {
+    background-color: #b99976;
+    &::after{
+        display: block;
+    }
+}
+
+.checkbox-label{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #664229;
+    font-weight: 600;
+    cursor: pointer;
+    div{
+        display: flex;
+        align-items: center;
+        a{
+            text-decoration: underline;
+            font-size: 14px;
+            color: #b99976;
+            font-weight: 600;
+            transition: all linear .2s;
+            margin-inline-start: 4px;
+            &:hover{
+                color: #664229;
+                text-decoration: underline;
+
+            }
+        }
+    }
+    p{
+        margin: 0;
+    }
+}
+
+button[type="submit"]:disabled{
+    cursor: not-allowed;
+}
+
+
+.submitBtn-holder{
+    width: 100%;
+    margin-top: 25px;
+    button{
+        transition: all linear .2s;
+        display: flex;
+        width: 100%;
+        height: 40px;
+        background-color: #664229;
+        color: #fff;
+        font-weight: 700;
+        align-items: center;
+        justify-content: center;
+        &:hover{
+            background-color: #b99976;
+            color: #fff;
+        }
+    }
+}
+
+.myradio-parent{
+    margin-bottom: 13px;
+    display: flex;
+    flex-direction: column;
+    height: 114px;
+    flex-wrap: wrap;
+    width: 320px;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.radio-general-input-div{
+    margin-bottom: 22px;
+}
+
+
+
+
+
+.error{
+    color: red;
+    margin-top: 7px;
+    font-size: 14px;
+}
+.input-error{
+    border: 1px solid red !important;
+}
+
+
+
+
+
+.css-b62m3t-container{
+    width: 350px;
+    height: 40px;
+    background-color: #f4f5f6;
+    display: block;
+    border: none;
+    outline: none;
+    padding: 0 ;
+}
+.react-international-phone-input-container{
+    // flex-direction: row-reverse;
+    direction: ltr;
+    width: 100%;
+    height: 40px;
+    border: 1px solid transparent;
+    &:focus{
+        border-color: #664229;
+    }
+}
+.react-international-phone-input-container .react-international-phone-input{
+    border: none;
+
+    height: 40px !important;
+    flex-grow: 1;
+    font-weight: 600;
+    font-size: 14px;
+    height: 100%;
+    background-color: #f4f5f6;
+}
+.react-international-phone-country-selector-button__button-content{
+    background-color: #f4f5f6;
+}
+.react-international-phone-input-container .react-international-phone-country-selector-button{
+    height: 100%;
+    border: none;
+    padding: 0;
+    height: 40px;
+}
+.react-international-phone-country-selector-button__button-content{
+    padding: 5px 0  5px 10px;
+    height: 40px;
+}
+.css-13cymwt-control{
+    height: 40px !important;
+    border: none !important;
+    background-color: transparent !important;
+}
+
+.css-1dimb5e-singleValue{
+    font-size: 14px;
+}
+
+.css-1u9des2-indicatorSeparator{
+    display: none;
+}
+
+.number-holder-div{
+    position: relative;
+    input{
+        direction: rtl;
+        padding-inline-end: 40px;
+        color: #664229;
+        font-weight: 600;
+    }
+    .img-text-holder{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        inset-inline-end: 10px;
+        display: flex;
+        align-items: center;
+        span{
+            color: #664229;
+            font-weight: 600;
+        }
+    }
+    img{
+        margin-inline-start: 5px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+@include max-768 {
+    .css-b62m3t-container{
+        width: 100%;
+    }
+    .register-form-content{
+        width: 100%;
+    }
+   
+    .register-content{
+       padding: 10px 15px 60px 15px;
+    }
+    // .checkmark{
+    //     flex-shrink: 0;
+    // }
+    .myradio-parent{
+        height: 135px;
+    }
+ 
+    .general-input{
+        padding: 0 15px;
+    }
+    .radio-general-input-div .myLabel{
+        margin-bottom: 15px;
+    }
+    .radio-div{
+        margin-bottom: 5px;
+    }
+   
+}
+
+
+
+
+// ********************************************************************************************

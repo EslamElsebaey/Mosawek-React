@@ -1,0 +1,106 @@
+.general-form-content{
+    padding: 20px;
+    height: 409px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.general-input{
+    &::placeholder{
+        font-size: 14px;
+        color: #999999;
+        font-weight: 600;
+    }
+    
+}
+
+
+.signin-form{
+ 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   
+    .forget-text{
+        display: block;
+        text-align: center;
+        font-size: 14px;
+        color: #664229;
+        font-weight: 600;
+        text-align: center;
+        text-align: center;
+        margin: 17px 0;
+    }
+    .login-btn{
+        background-color: #664229;
+        &:hover{
+            color: #ffffff;
+            background-color: #b99976;
+        }
+    }
+    .register-newAcc-btn {
+        background-color: #b99976;
+        &:hover{
+            background-color: #664229;
+        }
+    }
+  
+}
+.pass-holder{
+    margin-top: 15px;
+    input {
+        padding-inline-end: 55px;
+        margin-bottom: 0;
+    }
+    position: relative;
+    i{
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        inset-inline-end:20px ;
+        font-size: 18px;
+        color: #999999;
+    }
+}
+
+
+.restore-form-content {
+    height: 302px;
+    .general-input {
+       margin-bottom: 20px;
+    }
+   }
+   
+   .sendCode-btn{
+       background-color: #664229;
+       margin-top: 20px;
+       &:hover{
+           background-color: #b99976;
+       }
+   }
+   
+   [type=number]::-webkit-inner-spin-button, [type=number]::-webkit-outer-spin-button{
+       display: none;
+   }
+
+
+
+@include max-768 {
+    form {
+        display: block;
+        width: 100%;
+    }
+    .general-input , .signin-form , .signin-form button , .restore-password-form , .restore-password-form  button , .codeConfirm-form-content , .codeConfirm-form-content button {
+        width: 100%;
+    }
+    .signin-content , .restore-form-content , .codeConfirm-form-content{
+        padding: 15px;
+    }
+   
+  .general-input::placeholder{
+        font-size: 13px;
+    }
+}

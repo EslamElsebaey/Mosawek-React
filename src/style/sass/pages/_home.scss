@@ -1,0 +1,228 @@
+.home-section {
+    padding: 30px 0 50px 0;
+  }
+  
+  .home-block {
+    display: flex;
+    background-color: #fff;
+    border: 1px solid rgb(227, 228, 230);
+    position: relative;
+    margin-bottom: 10px;
+  }
+  .home-block .fav-btn {
+    width: 36px;
+    height: 36px;
+    border: 0;
+    outline: none;
+    background-color: #f4f5f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+    position: absolute;
+    top: 10px;
+    inset-inline-end: 10px;
+    z-index: 9;
+  }
+  .home-block .fav-btn:hover {
+    background-color: #f73c3c;
+  }
+  .home-block .fav-btn:hover i {
+    color: #fff;
+  }
+  .home-block .fav-btn i {
+    color: #999;
+    font-size: 24px;
+    transition: 0.5s;
+  }
+  .home-block .home-block a {
+    margin-bottom: 0;
+  }
+  .home-block .home-details {
+    margin-inline-start: 20px;
+    margin-inline-end: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .home-discription li i {
+    font-size: 18px;
+    margin-inline-end: 9px;
+  }
+  
+  .home-details a {
+    font-weight: 700;
+    color: #664229;
+    font-size: 16px;
+    transition: 0.5s;
+    margin-top: 20px;
+    display: block;
+    margin-bottom: 18px;
+    text-align: start;
+  }
+  .home-details a:hover {
+    color: #b99976;
+  }
+  
+  .home-discription {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .home-details p {
+    color: #b99976;
+    font-size: 24px;
+    margin: 0 0 26px;
+    text-align: start;
+    font-weight: 700;
+  }
+  
+  .pro-img {
+    overflow: hidden;
+  }
+  
+  .home-block figure {
+    margin: 0;
+  }
+  .home-block figure img {
+    transition: all linear 0.2s;
+  }
+  .home-block figure:hover img {
+    transform: scale(1.1);
+  }
+  
+  .home-details span {
+    font-size: 14px;
+    color: #999;
+    text-align: start;
+    font-weight: 600;
+  }
+  
+  .home-discription li {
+    font-size: 14px;
+    color: #999;
+    font-weight: 600;
+    margin-inline-end: 28px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+  
+  .home-discription li i {
+    font-size: 18px;
+    margin-inline-end: 9px;
+  }
+  
+  .pagination-sec {
+    margin-top: 30px;
+  }
+  
+  .pagination-sec-parent {
+    max-width: 300px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    -moz-column-gap: 10px;
+    column-gap: 10px;
+  }
+  
+  .pagination-sec-parent a.next, .pagination-sec-parent a.prev {
+    font-size: 16px;
+  }
+  
+  .pagination-sec-parent a {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+    color: #999999;
+    font-weight: 700;
+    border-radius: 50%;
+    background-color: #e6e7e8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all linear 0.2s;
+  }
+  .pagination-sec-parent a:hover {
+    background-color: #b99976;
+    color: #fff;
+  }
+  
+  .pagination-sec-parent a.page-active {
+    background-color: #b99976;
+    color: #fff;
+  }
+  
+  .mobile-show-icons {
+    display: none;
+  }
+  
+  .fixed-bottom {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1030;
+  }
+  
+  .mobile-icons li {
+    border-inline-end: 1px solid rgba(153, 153, 153, 0.368627451);
+  }
+  
+  .add-adv-btn {
+    width: 132px;
+    height: 40px;
+    background-color: var(--main-hover);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sec-color);
+    font-size: 14px;
+    font-weight: 700 ;
+    border: 0;
+    outline: none;
+    transition: 0.5s;
+    padding: 0;
+  }
+  
+  .add-adv-btn i {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-inline-end: 8px;
+  }
+  
+
+  .dropbtn i {
+    font-size: 20px;
+    color: var(--main-color);
+    margin-inline-end: 7px;
+    transition: 0.5s;
+  }
+  
+  .show-icons {
+    position: relative;
+    font-size: 24px;
+    font-weight: 400;
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: var(--main-color);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .fixed-search {
+    display: none;
+  }
+  
+
+  @media (min-width: 992px) and (max-width: 1199px) {
+    .add-adv-btn {
+      width: 110px;
+    }
+  }

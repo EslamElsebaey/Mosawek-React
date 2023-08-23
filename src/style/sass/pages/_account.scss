@@ -1,0 +1,167 @@
+
+.account-section{
+    margin-bottom: 30px;
+}
+.account-section-parent{
+    display: grid;
+    grid-template-columns: 262px 1fr;
+    column-gap: 0;
+}
+
+.user-photo-section{
+    margin-bottom: 20px;
+}
+.user-photo-parent{
+    width: 131px;
+    height: 131px;
+    margin: auto;
+}
+.links{
+    ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        li{
+          
+            width: 100%;
+            text-align: center;
+            a , button{
+                display: block;
+                width:100%;
+                text-align: center;
+                font-size: 14px;
+                color: #808080;
+                font-weight: 400;
+                padding: 10px 0;
+                &:hover{
+                    color: $second-color;
+                }
+            }
+            
+        }
+    }
+}
+
+.content{
+    padding: 35px;
+    background-color: #ffffff;
+}
+
+.section-cont{
+    h2{
+        font-size: 22px;
+        color: #664229;
+        font-weight: 700;
+        margin-bottom: 40px;
+    }
+}
+
+.edit-profile-cont{
+    .general-input-div{
+        display: grid;
+        grid-template-columns: 170px 1fr;
+        column-gap: 10px;
+        align-items: flex-start;
+    }
+    .myform .myLabel{
+        margin-bottom: 0;
+        height: 40px;
+        display: flex;
+        align-items: center;
+    }
+    .submitBtn-holder{
+        display: flex;
+        justify-content: flex-end;
+        button{
+            width: 152px;
+            height: 40px;
+        }
+    }
+    .css-b62m3t-container , .general-input{
+        width: 100%;
+    }
+}
+.links ul .activeLink{
+    background-color: #fff;
+    color: $second-color;
+   
+}
+
+
+.user-photo-parent{
+    position: relative;
+    &:hover{
+        .user-overlay{
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    .user-overlay{
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        transition: all linear .2s;
+        cursor: pointer;
+        inset: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba($color: #000000, $alpha: 0.302);
+        i{
+            font-size: 30px;
+            color: #ffffff;
+            text-align: center;
+        }
+    }
+    .user-pic{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        inset: 0;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+        
+    }
+   
+}
+
+
+.label-img{
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    cursor: pointer;
+    z-index: 2;
+    input{
+        height: 100%;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0;
+    }
+}
+
+.side-menu{
+    background-color: #fbfbfb;
+    padding-top: 20px;
+}
+
+.account-section-parent{
+    position: relative;
+}
+
+.editPassword-sec-cont{
+    .pass-holder{
+        margin-top: 0;
+    }
+}
+.section-cont{
+    .number-holder-div input{
+        color: #808080;
+    }
+}
