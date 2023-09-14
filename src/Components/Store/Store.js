@@ -1,6 +1,6 @@
 import { create } from 'zustand'
-import {ecommerceAPI} from "../API/axios-custom"
-import {locationsAPI} from "../API/axios-custom"
+import {ecommerceAPI} from "../../API/axios-custom"
+import {locationsAPI} from "../../API/axios-custom"
 import { FaCheckCircle } from 'react-icons/fa';
 import { CgSpinner } from 'react-icons/cg';
 

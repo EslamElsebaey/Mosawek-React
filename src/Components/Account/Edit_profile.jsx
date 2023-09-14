@@ -21,7 +21,7 @@ const { profileData } = useProfileDataStore();
 
 let {cityList , getCities   , setCitySelected , citySelected } = useCitiesStore();
 let {zoneList , setZoneSelected  , getZones } = useZonesStore();
-const [memberSelected, setMemberSelected] = useState(null);
+const [setMemberSelected] = useState(null);
 
 
 
