@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Mosawek-React/static/css/main.209528e6.css",
+    "main.css": "/Mosawek-React/static/css/main.0ac98724.css",
     "main.js": "/Mosawek-React/static/js/main.19fd2f83.js",
     "static/media/la-brands-400.svg": "/Mosawek-React/static/media/la-brands-400.928495fae14841a0d610.svg",
     "static/media/la-solid-900.svg": "/Mosawek-React/static/media/la-solid-900.a813034654b4ff0a0bac.svg",
@@ -48,11 +48,11 @@
     "static/media/la-regular-400.woff": "/Mosawek-React/static/media/la-regular-400.aa859c0d08b8193d6586.woff",
     "static/media/la-regular-400.woff2": "/Mosawek-React/static/media/la-regular-400.8dc1cedf1f4987f82b72.woff2",
     "index.html": "/Mosawek-React/index.html",
-    "main.209528e6.css.map": "/Mosawek-React/static/css/main.209528e6.css.map",
+    "main.0ac98724.css.map": "/Mosawek-React/static/css/main.0ac98724.css.map",
     "main.19fd2f83.js.map": "/Mosawek-React/static/js/main.19fd2f83.js.map"
   },
   "entrypoints": [
-    "static/css/main.209528e6.css",
+    "static/css/main.0ac98724.css",
     "static/js/main.19fd2f83.js"
   ]
 }
