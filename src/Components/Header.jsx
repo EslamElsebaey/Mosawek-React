@@ -2,7 +2,7 @@ import React, { useEffect , useRef, useState } from 'react'
 import logo from "./../../src/images/logo.png"
 import { Link , useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next';
-import {useLocaleLangStore  , useCheckLoginStore , useLogOutStore} from "../Global_state/Zustand_Store"
+import {useLocaleLangStore  , useCheckLoginStore , useLogOutStore} from "../Store/Store"
 
 function Header() {
 

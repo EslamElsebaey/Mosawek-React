@@ -17,7 +17,7 @@ import EditPassword from './Components/Account/EditPassword';
 import Protectedroute from './Components/Protectedroute';
 import NewPassword from './pages/NewPassword';
 import { useTranslation } from "react-i18next";
-import { useLocaleLangStore , useCheckLoginStore } from './Global_state/Zustand_Store';
+import { useLocaleLangStore , useCheckLoginStore } from './Store/Store';
 
 
 

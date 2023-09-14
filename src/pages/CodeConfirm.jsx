@@ -7,7 +7,7 @@ import {  toast , ToastContainer } from 'react-toastify';
 import { ImSpinner8 } from 'react-icons/im';
 import { useTranslation } from 'react-i18next';
 import {ecommerceAPI} from "../API/axios-custom"
-import {useSuccessMsgStore , useWhereToGoStore } from "../Global_state/Zustand_Store"
+import {useSuccessMsgStore , useWhereToGoStore } from "../Store/Store"
 
 
 

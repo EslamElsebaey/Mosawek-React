@@ -6,7 +6,7 @@ import building4 from "./../../src/images/home-images/04.png"
 import building5 from "./../../src/images/home-images/05.png"
 import building6 from "./../../src/images/home-images/06.png"
 import { useTranslation } from 'react-i18next';
-import {useCheckLoginStore} from "../Global_state/Zustand_Store"
+import {useCheckLoginStore} from "../Store/Store"
  
 
 function Home() {

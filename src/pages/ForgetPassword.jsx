@@ -7,7 +7,7 @@ import {useNavigate} from 'react-router-dom';
 import Breadcrumb from './../Components/Breadcrumb';
 import { useTranslation } from 'react-i18next';
 import {ecommerceAPI} from "../API/axios-custom"
-import {useSuccessMsgStore } from "../Global_state/Zustand_Store"
+import {useSuccessMsgStore } from "../Store/Store"
 
 
 

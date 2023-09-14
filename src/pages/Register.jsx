@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 import {ecommerceAPI} from "../API/axios-custom"
 import { useNavigate} from 'react-router-dom';
 
-import {useMembershipListStore  , useSuccessMsgStore , useZonesStore , useCountriesStore , useCitiesStore , useWhereToGoStore} from "../Global_state/Zustand_Store"
+import {useMembershipListStore  , useSuccessMsgStore , useZonesStore , useCountriesStore , useCitiesStore , useWhereToGoStore} from "../Store/Store"
 
 function Register() {
 

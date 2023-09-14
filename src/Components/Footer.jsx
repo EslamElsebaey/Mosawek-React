@@ -6,7 +6,7 @@ import tasawkEN from "../images/tasawk-en.png"
 import appStore from "../images/app-store.png"
 import googlePlay from "../images/google-play.png"
 import { useTranslation } from 'react-i18next';
-import {useLocaleLangStore} from "../Global_state/Zustand_Store"
+import {useLocaleLangStore} from "../Store/Store"
 
 
 // import $ from 'jquery';

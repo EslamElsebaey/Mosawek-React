@@ -7,7 +7,7 @@ import {SignInSchema} from "./../Components/Schema"
 import {  toast , ToastContainer } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import {ecommerceAPI} from "../API/axios-custom"
-import {useSuccessMsgStore } from "../Global_state/Zustand_Store"
+import {useSuccessMsgStore } from "../Store/Store"
 
 
 

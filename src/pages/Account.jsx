@@ -3,7 +3,7 @@ import Breadcrumb from './../Components/Breadcrumb';
 import {Link, Outlet , useNavigate} from 'react-router-dom';
 import {useState} from 'react';
 import { useTranslation } from 'react-i18next';
-import {useProfileDataStore , useAvatarStore  , useLogOutStore , useMembershipListStore , useCheckLoginStore , } from "../Global_state/Zustand_Store"
+import {useProfileDataStore , useAvatarStore  , useLogOutStore , useMembershipListStore , useCheckLoginStore , } from "../Store/Store"
 
 
 
