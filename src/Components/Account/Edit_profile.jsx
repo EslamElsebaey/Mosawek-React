@@ -6,7 +6,7 @@ import {  toast , ToastContainer } from 'react-toastify';
 import Select from 'react-select';
 import {EditProfileSchema} from "./../../Components/Schema"
 import { useTranslation } from 'react-i18next';
-import {useProfileDataStore , useAvatarStore , useSuccessMsgStore , useZonesStore  , useMembershipListStore , useCitiesStore} from "../../Store/Store"
+import {useProfileDataStore , useAvatarStore , useSuccessMsgStore , useZonesStore  , useMembershipListStore , useCitiesStore} from "../../Components/Store/Store"
 
 
 
