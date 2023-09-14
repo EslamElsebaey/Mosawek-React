@@ -34,48 +34,48 @@ let schema = EditProfileSchema();
      const {successMessageFunc} = useSuccessMsgStore()
 
 
-    function updateProfile (values, { setSubmitting, resetForm , setFieldError   }){
-        let formData ;
-        if(avatar.length === 0) {
-            formData = values
-        }else{
-            let allValues = {...values  , avatar };
-             formData = new FormData();
-             Object.keys(allValues).forEach((key)=>{
-                formData.append(key ,allValues[key] )
-             })
-        }
-        ecommerceAPI.post('/profile' ,formData ,)
-        .then(response => {
-            console.log(response)
-          setSubmitting(false)
-          toast.success( successMessageFunc(translate("editProfile/updateProfileSuccessMsg") , "" , "" , "d-none"), {
-            position: "top-center",
-            autoClose: 2500,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
+function updateProfile (values, { setSubmitting, resetForm , setFieldError   }){
+    let formData ;
+    if(avatar === null) {
+        formData = values
+    }else{
+        let allValues = {...values  , avatar };
+            formData = new FormData();
+            Object.keys(allValues).forEach((key)=>{
+            formData.append(key ,allValues[key] )
             })
+    }
+    ecommerceAPI.post('/profile' ,formData)
+    .then(response => {
+        console.log(response)
+        setSubmitting(false)
+        toast.success( successMessageFunc(translate("editProfile/updateProfileSuccessMsg") , "" , "" , "d-none"), {
+        position: "top-center",
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
         })
-        .catch(error => {
-          console.log(error)
-          if (error.response) {
-            setSubmitting(false)
-            const { data } = error.response;
-            if(data.errors){
-                Object.keys(data.errors).forEach((key)=>{
-                    setFieldError(key , data.errors[key][0])
-                 })
-            }
-           
-            // setFieldError("code" , data.message )
-          }
-        });
-       
-      }
+    })
+    .catch(error => {
+        console.log(error)
+        if (error.response) {
+        setSubmitting(false)
+        const { data } = error.response;
+        if(data.errors){
+            Object.keys(data.errors).forEach((key)=>{
+                setFieldError(key , data.errors[key][0])
+                })
+        }
+        
+        // setFieldError("code" , data.message )
+        }
+    });
+    
+    }
 
 
 

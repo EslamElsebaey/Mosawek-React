@@ -31,13 +31,18 @@ function App() {
   useEffect(() => {
     // Detect Current Language
     let locale = localStorage.locale;
+   if(locale === undefined){
+    locale = localStorage.setItem("locale" , "ar")
+   }else{
     i18n.changeLanguage(locale);
     if (locale === 'en') {
       document.body.className = "en";
     } else {
       document.body.removeAttribute('class');
     }
-
+   }
+   
+   
 
     $(window).on("load", function () {
       $(".preloader").fadeOut();
