@@ -1,40 +1,42 @@
 
-import React, { useContext } from 'react'
+import React from 'react'
 import { Formik, Form   } from 'formik';
-import axios from 'axios';
 import { ImSpinner8 } from 'react-icons/im';
 import { useState  } from 'react';
-import {editPassword} from "./../../Components/Schema"
+import {EditPasswordSchema} from "./../../Components/Schema"
 import {  toast , ToastContainer } from 'react-toastify';
-// import { FaCheckCircle   } from 'react-icons/fa';
-import { GlobalStateContext } from '../GlobalState';
+import { useTranslation } from 'react-i18next';
+import {ecommerceAPI} from "../../API/axios-custom"
+import {useSuccessMsgStore} from "../../Global_state/Zustand_Store"
+
+
 
 
 
 
 function EditPassword() {
 
+let schema = EditPasswordSchema();
+
+  const { t : translate } = useTranslation();
+
 
   const [toggleOldPass, setToggleOldPass] = useState(true);
   const [togglePass, setTogglePass] = useState(true);
   const [toggleConfirmPass, setToggleConfirmPass] = useState(true);
-  let {successMessageFunc} = useContext(GlobalStateContext) ;
+ 
+  let {successMessageFunc} = useSuccessMsgStore();
+
 
 
 
 
   function changePassword (values, { setSubmitting, resetForm , setFieldError  }){
-    axios.post('https://vm.tasawk.net/rest-api/ecommerce/profile/update-password',  values , {
-      headers: {
-        'Accept-Language': 'ar',
-        "X-Api-Token" : JSON.parse(localStorage.getItem("mosaweq-new-user")) ,
-        "Accept" : " application/json"
-    }
-    })
+    ecommerceAPI.post('/profile/update-password',  values)
     .then(response => {
       console.log(response)
       setSubmitting(false)
-      toast.success( successMessageFunc("تم تغيير كلمة المرور بنجاح" , "" , "" , "d-none"), {
+      toast.success( successMessageFunc(translate("passwordChangedSuccessMsgText") , "" , "" , "d-none"), {
         position: "top-center",
         autoClose: 2500,
         hideProgressBar: false,
@@ -70,7 +72,7 @@ const validate = (values)=> {
     <>
     <ToastContainer/>
     <div className="section-cont editPassword-sec-cont">
-        <h2>تعديل كلمة المرور</h2>
+        <h2>{translate("editPassword/title")}</h2>
         <div className="edit-profile-cont">
         <Formik
           onSubmit={changePassword}
@@ -80,7 +82,7 @@ const validate = (values)=> {
             password_confirmation: "",
             devices_token: '211212121',
           }}
-          validationSchema={editPassword}
+          validationSchema={schema}
           validate={validate}
           >
             {({ isSubmitting, values, handleChange, handleBlur, errors, touched , setFieldValue , validateField }) => (
@@ -88,7 +90,7 @@ const validate = (values)=> {
               <Form className='myform'>
                 <div className="general-input-div">
                   <label className="myLabel" htmlFor="">
-                      كلمة المرور الحالية 
+                  {translate("editPassword/currentPassword")}   
                   </label>
                   <div>
                   <div className="pass-holder">
@@ -112,7 +114,7 @@ const validate = (values)=> {
 
                 <div className="general-input-div">
                   <label className="myLabel" htmlFor="">
-                    كلمة المرور الجديدة
+                  {translate("editPassword/newPassword")}
                   </label>
                   <div>
                   <div className="pass-holder">
@@ -137,7 +139,7 @@ const validate = (values)=> {
 
                 <div className="general-input-div">
                   <label className="myLabel" htmlFor="">
-                    تأكيد كلمة المرور الجديدة
+                  {translate("editPassword/passwordConfirmation")} 
                   </label>
                   <div>
                   <div className="pass-holder">
@@ -159,7 +161,7 @@ const validate = (values)=> {
                 </div>
                 <div className='submitBtn-holder'>
                   <button type='submit'  disabled={isSubmitting} className='ancor-btn'> 
-                  {!isSubmitting ? "حفظ التغييرات" : <ImSpinner8 size={22} className='spinner' />}
+                  {!isSubmitting ?  translate("editPassword/saveChanges")  : <ImSpinner8 size={22} className='spinner' />}
                   </button>
                 </div>
               </Form>

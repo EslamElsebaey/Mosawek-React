@@ -1,28 +1,53 @@
-import React, { useContext, useEffect} from 'react'
+import React, { useEffect} from 'react'
 import Breadcrumb from './../Components/Breadcrumb';
-import {Link, Outlet} from 'react-router-dom';
+import {Link, Outlet , useNavigate} from 'react-router-dom';
 import {useState} from 'react';
-import { GlobalStateContext } from './../Components/GlobalState';
+import { useTranslation } from 'react-i18next';
+import {useProfileDataStore , useAvatarStore  , useLogOutStore , useMembershipListStore , useCheckLoginStore , } from "../Global_state/Zustand_Store"
+
+
+
+
 
 
 
 
 
 function Account() {
-    let {profileData , getMembershipList  , avatar , logOut , getProfileData , membershipList , setAvatar } = useContext(GlobalStateContext)
 
-    // console.log(profileData.avatar)
+    const { membershipList , getMembershipList } = useMembershipListStore();
+    let {    avatar    , setAvatar } = useAvatarStore()
+    let {logOut  } = useLogOutStore();
+
+    let navigation = useNavigate();
+
+    
+    function handleLogout() {
+        logOut(checkLogin , setIsLogin); 
+        navigation('/signin'); 
+      }
+    
+
+
+    let {checkLogin , setIsLogin } = useCheckLoginStore()
+    
+const { t : translate } = useTranslation();
+
+
+const { profileData, getProfileData } = useProfileDataStore();
+
+   
 
     const [activeLink, setActiveLink] = useState(1);
     const links = [
-        {id: 1, text: 'تعديل بيانات الحساب', path: "editProfile"},
-        {id: 2, text: 'تعديل كلمة المرور', path: "editPassword"},
-        {id: 3, text: "إعلاناتي", path: ""},
-        {id: 4, text: "المفضلة", path: ""},
-        {id: 5, text: "الإشعارات", path: ""},
-        {id: 6, text: "المحادثات", path: ""},
-        {id: 7, text: "التحويلات البنكية", path: ""},
-        {id: 8, text: "طلبات توثيق العقود", path: ""},
+        {id: 1, text:  translate('account/editProfile'), path: "editProfile"},
+        {id: 2, text:  translate('account/editPassword'), path: "editPassword"},
+        {id: 3, text: translate('account/myadvs'), path: ""},
+        {id: 4, text: translate('account/favourite') , path: ""},
+        {id: 5, text: translate('account/notifications') , path: ""},
+        {id: 6, text: translate('account/conversations'), path: ""},
+        {id: 7, text: translate('account/bankTransfers'), path: ""},
+        {id: 8, text: translate('account/contractRequests'), path: ""},
     ];
 
     const handleLinkClick = (linkId) => {
@@ -32,8 +57,11 @@ function Account() {
     // handle image change
     const [selectedImage, setSelectedImage] = useState(null);
 
-    
+  
+
+      
     const handleImageChange = (event) => {
+        console.log(event.target.files[0])
         const imageFile = event.target.files[0];
         setSelectedImage(imageFile);
     };
@@ -43,6 +71,10 @@ function Account() {
         getProfileData()
         getMembershipList()
     } , [])
+    
+
+  
+
 
     return (
         <>
@@ -52,7 +84,7 @@ function Account() {
                 <div></div>
             </div>
             </div>  :  <>
-        <Breadcrumb title="حسابى"/>
+        <Breadcrumb title= {translate("breadcrumb/account/title")} />
         <div className="account-section">
             <div className="container">
                 <div className="account-section-parent">
@@ -75,8 +107,8 @@ function Account() {
                     </label>
                     <div className="user-pic">
                         <img id="user_photo"
-                                src={selectedImage ? URL.createObjectURL(selectedImage) : profileData.avatar}
-                                alt='user'/>
+                            src={selectedImage ? URL.createObjectURL(selectedImage) : profileData.avatar}
+                            alt='user'/>
                     </div>
                 </div>
                 </div>
@@ -94,10 +126,10 @@ function Account() {
                             </li>
                         ))}
                         <li>
-                            <button onClick={logOut} className='ancor-btn'>تسجيل الخروج</button>
+                            <button onClick={handleLogout} className='ancor-btn'>{translate("account/logout")} </button>
                         </li>
                         <li>
-                            <button className='ancor-btn'>حذف الحساب</button>
+                            <button className='ancor-btn'>{translate("account/deleteAccount")}  </button>
                         </li>
                     </ul>
                 </div>

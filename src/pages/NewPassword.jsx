@@ -1,12 +1,15 @@
-import React ,  { useState  , useContext }  from 'react'
+import React ,  { useState  }  from 'react'
 import Breadcrumb from './../Components/Breadcrumb';
 import { Formik, Form   } from 'formik';
-import {newPasswordSchema} from "./../Components/Schema"
+import {NewPasswordSchema} from "./../Components/Schema"
 import { ImSpinner8 } from 'react-icons/im';
-import axios from 'axios';
 import {  toast , ToastContainer } from 'react-toastify';
-import { GlobalStateContext } from './../Components/GlobalState';
-import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import {ecommerceAPI} from "../API/axios-custom"
+import { useNavigate} from 'react-router-dom';
+import {useSuccessMsgStore } from "../Global_state/Zustand_Store"
+
+
 
 
 
@@ -16,25 +19,24 @@ import { useNavigate } from 'react-router-dom';
 
 
 function NewPassword() {
+let schema = NewPasswordSchema() ;
+const { t : translate } = useTranslation();
 
-  let {successMessageFunc} = useContext(GlobalStateContext)
+
+let {successMessageFunc} = useSuccessMsgStore()
+
 
     const [togglePass, setTogglePass] = useState(true);
     const [toggleConfirmPass, setToggleConfirmPass] = useState(true);
- let navigation = useNavigate() ;
+    let navigation = useNavigate();
     
 
 function newPasswordFunc (values, { setSubmitting , resetForm , setFieldError   }){
-    axios.post('https://vm.tasawk.net/rest-api/ecommerce/auth/new-password' ,values , {
-      headers: {
-        'Accept-Language': 'ar' ,
-        "Accept" : " application/json"
-    }
-    } )
+  ecommerceAPI.post('/auth/new-password' ,values )
     .then(response => {
       console.log(response)
       setSubmitting(true)
-      toast.success( successMessageFunc(" تم تغيير كلمة المرور بنجاح " , "سيتم الآن توجيهك الى صفحة تسجيل الدخول " ,"" , "" ), {
+      toast.success( successMessageFunc(translate("passwordChangedSuccessMsgText") , translate("redirectToLoginPage") ,"" , "" ), {
         position: "top-center",
         autoClose: 3500,
         hideProgressBar: false,
@@ -71,12 +73,12 @@ const validate = (values)=> {
   return (
     <>
      <ToastContainer />
-    <Breadcrumb title="ادخال كلمة المرور الجديدة"/>
+    <Breadcrumb title={translate("enterNewPasswordText")}/>
     <div className="forgetPass-section">
           <div className="container">
             <div className="general-form-content  ">
               <div className="restore-password-form">
-                <h2 className='general-form-content-h2'> ادخال كلمة المرور الجديدة</h2>
+                <h2 className='general-form-content-h2'> {translate("enterNewPasswordText")}</h2>
                 <Formik
                   onSubmit={newPasswordFunc}
                   initialValues={{
@@ -86,7 +88,7 @@ const validate = (values)=> {
                     password_confirmation : "" ,
                     devices_token : "147852369"
                   }}
-                  validationSchema={newPasswordSchema}
+                  validationSchema={schema}
                   validate={validate}
               >
                 {({ isSubmitting, values, handleChange, handleBlur, errors, touched  }) => (
@@ -100,7 +102,7 @@ const validate = (values)=> {
                           type={`${togglePass ? "password" : "text"}`}
                           name="password"
                           className='general-input'
-                          placeholder='كلمة المرور' />
+                          placeholder={translate("passwordPlaceholderText")} />
                            <i  onClick={()=>{setTogglePass(!togglePass)}} className={`las ${togglePass ? "la-eye-slash" : "la-eye"}`}></i>
                         </div>
                           {errors.password && touched.password && <div className="error">{errors.password}</div>}
@@ -114,7 +116,7 @@ const validate = (values)=> {
                           type={`${toggleConfirmPass ? "password" : "text"}`}
                           name="password_confirmation"
                           className='general-input'
-                          placeholder="تأكيد كلمة المرور" />
+                          placeholder={translate("confirmPasswordText")} />
                             <i  onClick={()=>{setToggleConfirmPass(!toggleConfirmPass)}} className={`las ${toggleConfirmPass ? "la-eye-slash" : "la-eye"}`}></i>
                         </div>
                           {errors.password_confirmation && touched.password_confirmation && <div className="error">{errors.password_confirmation}</div>}
@@ -125,9 +127,8 @@ const validate = (values)=> {
                           type='submit'
                           className='ancor-btn general-btn sendCode-btn '
                           >  
-                          {!isSubmitting ? "تغيير كلمة المرور" : <ImSpinner8 size={22} className='spinner' />} 
+                          {!isSubmitting ? translate("changePasswordText") : <ImSpinner8 size={22} className='spinner' />} 
                     </button>
-                  
                   </Form>
                 )}
               </Formik>

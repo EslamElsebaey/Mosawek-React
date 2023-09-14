@@ -1,79 +1,85 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import building1 from "./../../src/images/home-images/01.png"
 import building2 from "./../../src/images/home-images/02.png"
 import building3 from "./../../src/images/home-images/03.png"
 import building4 from "./../../src/images/home-images/04.png"
 import building5 from "./../../src/images/home-images/05.png"
 import building6 from "./../../src/images/home-images/06.png"
-import { GlobalStateContext } from './../Components/GlobalState';
+import { useTranslation } from 'react-i18next';
+import {useCheckLoginStore} from "../Global_state/Zustand_Store"
  
 
 function Home() {
 
 
-  let {checkLogin } = useContext(GlobalStateContext)
+  
+
+  let {checkLogin } = useCheckLoginStore()
+
+  const { t : translate } = useTranslation();
+
 
   
 let homeBlocks = [
   {
     img : building1 ,
-    title : "فيلا للبيع في شارع موهوب الجواليقي" , 
+    title : translate("home/advs/advTitle") , 
     space : 200 , 
     bedrooms : 5 , 
     couch : 2  ,
     bathrooms : 5 ,
-    price : 1250000  , 
-    address : "حي النسيم الشرقي، الرياض، الرياض  -  منذ 4 أيام"
+    price : translate("home/advs/advPriceText")  , 
+    address : translate("home/advs/advAddressText")
   },
   {
     img : building2 ,
-    title : "فيلا للبيع في شارع موهوب الجواليقي" , 
+    title : translate("home/advs/advTitle") , 
     space : 200 , 
     bedrooms : 5 , 
     couch : 2  ,
     bathrooms : 5 ,
-    price : 1250000  , 
-    address : "حي النسيم الشرقي، الرياض، الرياض  -  منذ 4 أيام"
+    price : translate("home/advs/advPriceText")  , 
+    address : translate("home/advs/advAddressText")
   },
   {
     img : building3 ,
-    title : "فيلا للبيع في شارع موهوب الجواليقي" , 
+    title : translate("home/advs/advTitle") , 
     space : 200 , 
     bedrooms : 5 , 
     couch : 2  ,
     bathrooms : 5 ,
-    price : 1250000  , 
-    address : "حي النسيم الشرقي، الرياض، الرياض  -  منذ 4 أيام"
+    price : translate("home/advs/advPriceText")  , 
+    address : translate("home/advs/advAddressText")
   },
   {
     img : building4 ,
-    title : "فيلا للبيع في شارع موهوب الجواليقي" , 
+    title : translate("home/advs/advTitle") , 
     space : 200 , 
     bedrooms : 5 , 
     couch : 2  ,
     bathrooms : 5 ,
-    price : 1250000  , 
-    address : "حي النسيم الشرقي، الرياض، الرياض  -  منذ 4 أيام"
+    price : translate("home/advs/advPriceText")  , 
+    address : translate("home/advs/advAddressText")
   },
   {
     img : building5 ,
-    title : "فيلا للبيع في شارع موهوب الجواليقي" , 
+    title : translate("home/advs/advTitle") , 
     space : 200 , 
     bedrooms : 5 , 
     couch : 2  ,
     bathrooms : 5 ,
-    price : 1250000  , 
-    address : "حي النسيم الشرقي، الرياض، الرياض  -  منذ 4 أيام"
+    price : translate("home/advs/advPriceText"), 
+    address : translate("home/advs/advAddressText")
   },
   {
     img : building6 ,
-    title : "فيلا للبيع في شارع موهوب الجواليقي" , 
+    title : translate("home/advs/advTitle") , 
     space : 200 , 
     bedrooms : 5 , 
     couch : 2  ,
     bathrooms : 5 ,
-    price : 1250000  , 
-    address : "حي النسيم الشرقي، الرياض، الرياض  -  منذ 4 أيام"
+    price : translate("home/advs/advPriceText")  , 
+    address : translate("home/advs/advAddressText")
   },
 
 ]
@@ -108,7 +114,7 @@ useEffect(()=>{
                <li><i className="las la-couch"></i> {buildingItem.couch}</li>
                <li><i className="las la-bath"></i> {buildingItem.bathrooms}</li>
               </ul>
-              <p>{buildingItem.price} ريال</p>
+              <p>{buildingItem.price} </p>
               <span>{buildingItem.address}</span>
             </div>
           
@@ -133,7 +139,7 @@ useEffect(()=>{
         </div>
       </div>
     </div>
-    <div className="mobile-show-icons fixed-bottom">
+    {/* <div className="mobile-show-icons fixed-bottom">
       <div className="container">
          <ul className="mobile-icons">
             <li>
@@ -164,7 +170,7 @@ useEffect(()=>{
             </li>
          </ul>
       </div>
-   </div>
+   </div> */}
     
     </>
   )

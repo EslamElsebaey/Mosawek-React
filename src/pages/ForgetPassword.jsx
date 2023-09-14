@@ -1,37 +1,36 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Formik, Form   } from 'formik';
-import {forgetPasswordSchema} from "./../Components/Schema"
+import {ForgetPasswordSchema} from "./../Components/Schema"
 import { ImSpinner8 } from 'react-icons/im';
-import { CgSpinner } from 'react-icons/cg';
-import { FaCheckCircle  } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import {  toast , ToastContainer } from 'react-toastify';
+import {useNavigate} from 'react-router-dom';
 import Breadcrumb from './../Components/Breadcrumb';
-import { GlobalStateContext } from '../Components/GlobalState';
+import { useTranslation } from 'react-i18next';
+import {ecommerceAPI} from "../API/axios-custom"
+import {useSuccessMsgStore } from "../Global_state/Zustand_Store"
+
 
 
 
 
 function ForgetPassword() {
-let {successMessageFunc} = useContext(GlobalStateContext)
-  let navigation = useNavigate() ;
+
+  const { t : translate } = useTranslation();
+
+  let {successMessageFunc} = useSuccessMsgStore()
+
+  let navigation = useNavigate();
 
    
-
+let schema = ForgetPasswordSchema() ;
 
   function forgetPassFunc (values, { setSubmitting , resetForm , setFieldError   }){
-    axios.post('https://vm.tasawk.net/rest-api/ecommerce/auth/forget-password' ,values , {
-      headers: {
-        'Accept-Language': 'ar' ,
-        "Accept" : " application/json"
-    }
-    } )
+    ecommerceAPI.post('/auth/forget-password' ,values )
     .then(response => {
       console.log(response)
       setSubmitting(true)
       localStorage.setItem("phone-number" , JSON.stringify(values.phone))
-      toast.success( successMessageFunc("تم ارسال الكود بنجاح " , "يرجى التحقق من الجوال الخاص بك  " , "سيتم الآن توجيهك الى صفحة ادخال الكود " , ""), {
+      toast.success( successMessageFunc(translate("codeSentSuccessMsg") , translate("checkPhoneText")  , translate("redirectToCodePageText") , ""), {
         position: "top-center",
         autoClose: 3500,
         hideProgressBar: false,
@@ -70,18 +69,18 @@ let {successMessageFunc} = useContext(GlobalStateContext)
   return (
   <>
       <ToastContainer />
-      <Breadcrumb title="استعادة كلمة المرور"/>
+      <Breadcrumb title={translate("restorePasswordText")}/>
       <div className="forgetPass-section">
           <div className="container">
             <div className="general-form-content  ">
               <div className="restore-password-form">
-                <h2 className='general-form-content-h2'> استعادة كلمة المرور</h2>
+                <h2 className='general-form-content-h2'> {translate("restorePasswordText")}  </h2>
                 <Formik
                   onSubmit={forgetPassFunc}
                   initialValues={{
                     phone : "" 
                   }}
-                  validationSchema={forgetPasswordSchema}
+                  validationSchema={schema}
                   // validate={validate}
               >
                 {({ isSubmitting, values, handleChange, handleBlur, errors, touched  }) => (
@@ -94,16 +93,15 @@ let {successMessageFunc} = useContext(GlobalStateContext)
                           type="number"
                           name="phone"
                           className='general-input'
-                          placeholder='رقم الجوال' />
+                          placeholder={translate("phoneNumberPlaceholderText")} />
                           {errors.phone && touched.phone && <div className="error">{errors.phone}</div>}
-                        
                     </div>
                     <button 
                           disabled={isSubmitting}
                           type='submit'
                           className='ancor-btn general-btn sendCode-btn '
                           >  
-                          {!isSubmitting ? "ارسال كود التحقق" : <ImSpinner8 size={22} className='spinner' />} 
+                          {!isSubmitting ? translate("sendCodeText") : <ImSpinner8 size={22} className='spinner' />} 
                     </button>
                   
                   </Form>

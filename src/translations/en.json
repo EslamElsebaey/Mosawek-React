@@ -1,0 +1,244 @@
+{
+  "nav/myAccountText": "My Account" , 
+  "nav/language" : "English"  , 
+  "nav/editProfile" : "Edit Profile" , 
+  "nav/editPassword" : "Edit Password  " , 
+  "nav/myadvs" : "My Advertisements"    , 
+  "nav/favourite" : "Favourite"  , 
+  "nav/notifications" : "Notifications"  , 
+  "nav/conversations" : "Conversations" , 
+  "nav/bankTransfers" : "Bank Transfers" ,
+  "nav/contractRequests"  : "Contract Requests" ,
+  "nav/login" : " Login" , 
+  "nav/logout" : "Logout" , 
+  "nav/deleteAccount" : "Delete Account" , 
+  "nav/createAdv" : "Create Advertisement"  , 
+  "header/searchBymap" : "Search by map " , 
+  "header/tags/all"  : "All" , 
+  "header/tags/apartments" : "Apartments for Rent" ,
+  "header/tags/lands" : " Lands for sale" , 
+  "header/tags/saleVillas" : " Villas for sale" , 
+  "header/tags/rendtalVillas" : "Villas for Rent" , 
+  "header/tags/saleBuildings" : " Buildings for sale"  , 
+  "header/tags/saleShops" : "Shops for sale" , 
+  "header/tags/saleFarms" : " Farm for sale" , 
+  "header/tags/rentalShops" : "shops for sale" ,
+  "header/tags/saleRestHouse": "resthouse for sale" ,
+  "header/tags/rentalBuildings" : "buildings for sale"  ,
+  "header/tags/rentalHome" : "home for rent " ,
+  "header/tags/slaeWareHouse" : "warehouse for sale" ,
+  "header/tags/saleApartments" : "Apartments for sale" ,
+  "editProfile/title" : "Edit Account Information" ,
+  "general/membershipTypeText" : "Membership type" , 
+  "fullNamePlaceholderText" : "Full Name " , 
+  "phoneNumberPlceholderText" : "Phone Number "  , 
+  "emailPlaceholderText" : "  Email",
+  "cityPlaceholderText" : "City" , 
+  "zonePlaceholderText" : "Zone" ,
+  "editProfile/saveChanges" : " Save changes" , 
+  "editPassword/title" : "Edit Password" ,
+  "editPassword/currentPassword" : "Current Password" , 
+  "editPassword/newPassword" : " New Password  " ,
+  "editPassword/passwordConfirmation" : "Confirm new password" , 
+  "editPassword/saveChanges" : "Save changes"  ,
+  "breadcrumb/home" : "Home"  ,
+  "breadcrumb/account/title" : "My Account" ,
+  "account/myAccountText": "My Account" , 
+  "account/editProfile" : "Edit Profile" , 
+  "account/editPassword" : "Edit Password  " , 
+  "account/myadvs" : "My Advertisements"    , 
+  "account/favourite" : "Favourite"  , 
+  "account/notifications" : "Notifications"  , 
+  "account/conversations" : "Conversations" , 
+  "account/bankTransfers" : "Bank Transfers" ,
+  "account/contractRequests"  : "Contract Requests" , 
+  "account/logout" : "Logout" , 
+  "account/deleteAccount" : "Delete Account"  , 
+  "footer/detailesText" :  "There are many variations of passages of Lorem Ipsum to choose from, but the majority have been modified throughout the text by some oddity or random words thrown into the text" ,
+  "footer/quickLinksText": "Quick links",
+  "footer/Links/rentContractDocument" : "Documentation of lease contracts ",
+  "footer/Links/bankTransferConfirm" : "Confirm bank transfers " ,
+  "footer/Links/about" : "  about us " , 
+  "footer/Links/terms&conditions": " Terms and Conditions  " ,
+  "footer/Links/commonQuestions" : " common questions " , 
+  "footer/Links/contactUs" : "  Contact us " ,
+  "footer/mainSectionsText" : " Main sections " ,
+  "footer/Links/saleApartments" : "Apartments for sale" ,
+  "footer/Links/saleLands" : "lands for sale" ,
+  "footer/Links/saleVillas" : "villas for sale" ,
+  "footer/Links/rentalHomes" : "homes for rent" , 
+  "footer/Links/rentalVillas" : " villas for rent" , 
+  "footer/Links/rentalRooms" : "rooms for rent" , 
+  "footer/Links/saleBuildings" : " buildings for sale" ,
+  "footer/Links/rentalShops" : " shops for rent" ,
+  "footer/Links/saleHome" : "home for sale" ,
+  "footer/Links/saleRestHouse" : " resthouse for sale" ,
+  "footer/Links/rentalHome" : "home for rent" ,
+  "footer/Links/rentalFarm" : "farm for rent " ,
+  "footer/Links/slaeShops" : "shops for rent" ,
+  "footer/Links/rentlRestHouse" : " RestHouse for rent ",
+  "footer/Links/rentalOffice" : "office for rent",
+  "footer/Links/rentalLands" : "lands for rent",
+  "footer/Links/rentalBuildings" : "buildings for rent" ,
+  "footer/Links/rentalWarehouse" : "Warehouse for rent",
+  "footer/Links/rentalCamp" : " Camp for rent",
+  "footer/Links/rentalChalet" : "Chalet for rent " , 
+  "footer/mosaweqText" : "  The virtual marketer" ,
+  "footer/mosaweq/develop&design" : "Develop and design by" ,
+  "schema/membershipRequired" : "type of membership is a required field" ,
+  "schema/nameEnglishOnly" : "Username in English only" ,
+  "schema/fullNameRequired" : "Fullname is a required field",
+  "schema/nameRequired" : "Username is a required field",
+  "schema/phoneStartBy5" : "Phone number must start by 5",
+  "schema/phoneMaxLength9" : "Phone number must be at least 9 numbers",
+  "schema/phoneRequired" : "Phone number is a required field",
+  "schema/countryRequired" : "Country is a required field",
+  "schema/emailInvalid" : "Invalid email",
+  "schema/emailRequired" : "Email is a required field",
+  "schema/passwordMinLenght6" : "Password must be at least 6 numbers/characters",
+  "schema/passwordRequired" : "Password is a required field",
+  "schema/passwordIdentical" :"Passwords do not match",
+  "schema/passwordConfirmRequired" : "Confirm password is a required field",
+  "schema/idnumberMinLength11" : "The ID number must be 11 digits long",
+  "schema/idnumberRequired" : "ID number is a required field" ,
+  "schema/zoneRequired" :"Zone is a required field" ,
+  "schema/cityRequired" : "City is a required field" ,
+  "schema/conditionsRequired" : "Terms and Conditions is a required field" ,
+  "schema/codeMaxLength5" :"The verification code must only be 5 number",
+  "schema/codeRequired" : "Verification code is a required field",
+  "schema/currentPasswordRequired" : "Current password is a required field" ,
+  "schema/newPasswordRequired" :"New password is a required field" ,
+  "schema/newPasswordConfirmRequired" : "Confirm new password is a required field" , 
+  "editProfile/updateProfileSuccessMsg" : "Account updated successfully",
+  "passwordChangedSuccessMsgText" : "Password changed successfully",
+  "codeConfirm/codeSuccessMsg" : "The verification code is correct" ,
+  "redirectToLoginPage" : "You will now be directed to the login page" ,
+  "redirectToNewpasswordPage" :"You will now be directed to the new password entry page" ,
+  "sendCodeText" : "Send verification code" ,
+  "validationCodeText" : "Validation code" ,
+  "codeSentSuccessMsg" :"The code has been sent successfully" ,
+  "redirectToCodePageText" :  "You will now be directed to the code entry page" ,
+  "checkPhoneText" : "Please check your phone" ,
+  "restorePasswordText" :"Restore password",
+  "phoneNumberPlaceholderText" : "Phone number" ,
+  "home/advs/advTitle" : "Villa for sale in Mahoub Al-Jawaliqi Street" ,
+  "home/advs/advAddressText" : "Al Naseem Al Sharqi District, Riyadh, Riyadh - 4 days ago",
+  "home/advs/advPriceText" : "1250000 riyals" ,
+  "confirmPasswordText" : "confirm password", 
+  "enterNewPasswordText" : "Enter the new password" ,
+  "passwordPlaceholderText" : "password",
+  "changePasswordText" : "change password" ,
+  "registerNewAccountText" :"Register a new account", 
+  "register/registeredSuccessMsg" : "successfully registered",
+  "register/codeSentToEmailText" : "The verification code has been sent to your email",
+  "identityNumberPlaceholderText" : "ID Number" ,
+  "countryPlaceholderText" : "Country",
+  "choosePlaceholderText" : "choose" , 
+  "register/breifPlaceholderText" : "Personal profile",
+  "login/loginSuccessMsg" : "You have logged in successfully" ,
+  "redirectToHomePage" : "You will now be directed to the home page" ,
+  "breadcrumb/Signin/title" : "Sign in" ,
+  "signin/forgetPasswordText" : "Did you forget your password ?" ,
+  "signin/signinBtnText" : "Sign in"  , 
+  "usernamePlaceholderText" : "username"  , 
+  "register/read&acceptText" : "I have read and agree to" ,
+  "register/terms&conditionsText" : "Terms and Conditions" , 
+  "register/registerBtn" : "Register"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

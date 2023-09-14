@@ -1,31 +1,40 @@
 import { Formik, Form   } from 'formik';
-import { useState , useEffect, useContext } from 'react';
-import axios from 'axios';
+import { useState , useEffect } from 'react';
 import Select from 'react-select';
 import arabic from "../images/arabic.png"
-import {registerSchema} from "./../Components/Schema"
-// import $ from 'jquery';
+import {RegisterSchema} from "./../Components/Schema"
 import Breadcrumb from '../Components/Breadcrumb';
-import { useNavigate } from 'react-router-dom';
 import { ImSpinner8 } from 'react-icons/im';
 import {  toast , ToastContainer } from 'react-toastify';
-import { GlobalStateContext } from './../Components/GlobalState';
+import { useTranslation } from 'react-i18next';
+import {ecommerceAPI} from "../API/axios-custom"
+import { useNavigate} from 'react-router-dom';
 
-
-
-
-
-
-
+import {useMembershipListStore  , useSuccessMsgStore , useZonesStore , useCountriesStore , useCitiesStore , useWhereToGoStore} from "../Global_state/Zustand_Store"
 
 function Register() {
-  let navigation = useNavigate() ;
+
+
+const {getCountries , countryList , setCountrySelected , countrySelected} = useCountriesStore();
+
+let {zoneList , setZoneSelected  , getZones} = useZonesStore();
+let {cityList , citySelected  , setCitySelected , getCities} = useCitiesStore();
+  
+  const { t : translate } = useTranslation();
+
+  const { membershipList  , getMembershipList} = useMembershipListStore();
+  
+
+  let schema = RegisterSchema() ;
+  let navigation = useNavigate();
   const [togglePass, setTogglePass] = useState(true);
   const [toggleConfirmPass, setToggleConfirmPass] = useState(true);
 
 
-  // context values
-  let { successMessageFunc , setCountrySelected , getZones , setZoneSelected , countrySelected ,  membershipList  , citySelected , setCitySelected , zoneList , cityList ,countryList , getCities , getCountries , getMembershipList  } = useContext(GlobalStateContext)
+ 
+  let {  setWhereToGo    } = useWhereToGoStore()
+  let {successMessageFunc} = useSuccessMsgStore()
+
 
 
 
@@ -33,14 +42,11 @@ function Register() {
 // Register func
  function userRegister (values, { setSubmitting, resetForm , setFieldError  }){
   const {checkboxField , ...restValues} = values
-  axios.post('https://vm.tasawk.net/rest-api/ecommerce/auth/register',  restValues , {
-    headers: {
-      'Accept-Language': 'ar'
-  }
-  })
+  ecommerceAPI.post('/auth/register',  restValues )
   .then(response => {
     setSubmitting(true)
-    toast.success( successMessageFunc("تم التسجيل بنجاح" , "تم ارسال كود التحقق الى البريد الخاص بك " , "سيتم الآن توجيهك الى صفحة ارسال الكود" , ""), {
+    setWhereToGo("registerStatus");
+    toast.success( successMessageFunc(translate("register/registeredSuccessMsg")   , translate("register/codeSentToEmailText") , translate("redirectToCodePageText") , ""), {
       position: "top-center",
       autoClose: 3500,
       hideProgressBar: false,
@@ -69,8 +75,8 @@ function Register() {
 
 
 useEffect(()=>{
-  getCountries()
   getMembershipList()
+  getCountries()
 } , [])
 
 useEffect(()=>{
@@ -96,7 +102,7 @@ const validate = (values) => {
           <div></div>
         </div>
       </div> :  <>
-      <Breadcrumb title="تسجيل حساب جديد"/>
+      <Breadcrumb title={translate("registerNewAccountText")}/>
         <div className="register-section">
             <div className="container">
                 <div className="register-content">
@@ -118,7 +124,7 @@ const validate = (values) => {
                         city_id: 0,
                         checkboxField: false
                     }}
-                    validationSchema={registerSchema}
+                    validationSchema={schema}
                     validate={validate}
         >
             
@@ -126,7 +132,7 @@ const validate = (values) => {
             <Form className='myform'>
               <div className="general-input-div radio-general-input-div">
                 <label className="myLabel" htmlFor="">
-                  نوع العضوية
+                {translate("general/membershipTypeText")}
                 </label>
                 <div className="myradio-parent">
                   {membershipList.length > 0 &&
@@ -136,7 +142,7 @@ const validate = (values) => {
                           <input
                             value={membership.value}
                             onChange={handleChange}
-                            onBlur={handleBlur}
+                            // onBlur={handleBlur}
                             type="radio"
                             className="owner-input"
                             name="membership_id"
@@ -153,7 +159,7 @@ const validate = (values) => {
 
               <div className="general-input-div">
                 <label className="myLabel" htmlFor="">
-                  اسم المستخدم “انجليزي فقط”
+                 {translate("schema/nameEnglishOnly")}
                 </label>
                 <input
                   name="name"
@@ -167,7 +173,7 @@ const validate = (values) => {
               </div>
               <div className="general-input-div">
                 <label className="myLabel" htmlFor="">
-                  رقم الهوية
+                 {translate("identityNumberPlaceholderText")}
                 </label>
                 <input
                   name="id_number"
@@ -182,7 +188,7 @@ const validate = (values) => {
 
               <div className="general-input-div">
                 <label className="myLabel" htmlFor="">
-                  الاسم بالكامل
+                  {translate("fullNamePlaceholderText")}
                 </label>
                 <input
                   name="full_name"
@@ -197,7 +203,7 @@ const validate = (values) => {
 
               <div className="general-input-div">
                 <label className="myLabel" htmlFor="">
-                  رقم الجوال
+                  {translate("phoneNumberPlceholderText")}
                 </label>
                 <div className="number-holder-div">
                   <input
@@ -219,7 +225,7 @@ const validate = (values) => {
 
               <div className="general-input-div">
                 <label className="myLabel" htmlFor="">
-                  البريد الإلكتروني
+                 {translate("emailPlaceholderText")}
                 </label>
                 <input
                   name="email"
@@ -235,7 +241,7 @@ const validate = (values) => {
 
               <div className="general-input-div select-general-input">
                 <label className="myLabel" htmlFor="">
-                الدولة
+                {translate("countryPlaceholderText")}
                 </label>
                   <Select
                     className={`general-input ${ touched.country_id && errors.country_id && "input-error"}`}
@@ -246,7 +252,7 @@ const validate = (values) => {
                             setCountrySelected(countrySelected)
                         }
                     }
-                    placeholder="اختر"
+                    placeholder ={translate("choosePlaceholderText")}
                     // value={regionSelectedOption}
                     options={countryList}
                 /> 
@@ -254,7 +260,7 @@ const validate = (values) => {
               </div>
               <div className="general-input-div select-general-input">
                 <label className="myLabel" htmlFor="">
-                المدينة
+                {translate("cityPlaceholderText")}
                 </label>
                   <Select
                     className={`general-input ${ touched.city_id && errors.city_id && "input-error"}`}
@@ -265,7 +271,7 @@ const validate = (values) => {
                             setCitySelected(citySelected)
                         }
                     }
-                    placeholder="اختر"
+                    placeholder = {translate("choosePlaceholderText")}
                     // value={regionSelectedOption}
                     options={cityList}
                 /> 
@@ -274,7 +280,7 @@ const validate = (values) => {
               
               <div className="general-input-div select-general-input">
                 <label className="myLabel" htmlFor="">
-                  المنطقة
+                  {translate("zonePlaceholderText")}
                 </label>
                   <Select
                     className={`general-input ${ touched.zone_id && errors.zone_id && "input-error"}`}
@@ -285,7 +291,7 @@ const validate = (values) => {
                               setZoneSelected(zoneSelected)
                         }
                         }
-                    placeholder="اختر"
+                    placeholder  = {translate("choosePlaceholderText")}
                     // value={zoneSelected}
                     options={zoneList}
                 />
@@ -295,7 +301,7 @@ const validate = (values) => {
 
               <div className="general-input-div">
                 <label className="myLabel" htmlFor="">
-                  كلمة المرور
+                {translate("passwordPlaceholderText")}
                 </label>
                 <div className="pass-holder">
                 <input
@@ -314,7 +320,7 @@ const validate = (values) => {
 
               <div className="general-input-div">
                 <label className="myLabel" htmlFor="">
-                  تأكيد كلمة المرور
+               { translate("confirmPasswordText")}
                 </label>
                 <div className="pass-holder">
                 <input
@@ -335,7 +341,7 @@ const validate = (values) => {
               </div>
               <div className="general-input-div">
                 <label className="myLabel" htmlFor="">
-                  نبذة شخصية
+                  {translate("register/breifPlaceholderText")}
                 </label>
                 <textarea
                   name="personal_info"
@@ -359,8 +365,8 @@ const validate = (values) => {
                 id="checkboxField"/>
                 <span className="checkbox-checkmark"></span>
                 <div className='d-flex align-items-center'>
-                  <span>لقد قرأت وأوافق على</span>
-                  <a className='termsLink ancor-btn' href="##">الشروط والأحكام</a>
+                  <span>{translate("register/read&acceptText")}</span>
+                  <a className='termsLink ancor-btn' href="##"> {translate("register/terms&conditionsText")}</a>
                 </div>
               </label>
               {errors.checkboxField && touched.checkboxField && <div className="error">{errors.checkboxField}</div>}
@@ -369,7 +375,7 @@ const validate = (values) => {
               
               <div className='submitBtn-holder'>
                 <button type='submit'  disabled={isSubmitting} className='ancor-btn'> 
-                {!isSubmitting ? "سجل الآن" : <ImSpinner8 size={22} className='spinner' />}
+                {!isSubmitting ? translate("register/registerBtn") : <ImSpinner8 size={22} className='spinner' />}
                 </button>
               </div>
             </Form>

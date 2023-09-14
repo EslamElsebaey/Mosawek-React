@@ -6,7 +6,8 @@ import App from './App';
 import "line-awesome/dist/line-awesome/css/line-awesome.min.css";
 import "jquery/dist/jquery.min.js"
 import '../src/style/main.css';
-import { BrowserRouter, HashRouter } from 'react-router-dom';
+import {  HashRouter } from 'react-router-dom';
+import './i18n';
 
 
 

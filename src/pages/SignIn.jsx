@@ -1,21 +1,28 @@
-import React , {useContext, useState } from 'react'
-import {Link} from "react-router-dom"
+import React , {useState } from 'react'
+import {Link , useNavigate} from "react-router-dom"
 import Breadcrumb from './../Components/Breadcrumb';
 import { Formik, Form   } from 'formik';
 import { ImSpinner8 } from 'react-icons/im';
-import {signInSchema} from "./../Components/Schema"
+import {SignInSchema} from "./../Components/Schema"
 import {  toast , ToastContainer } from 'react-toastify';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { GlobalStateContext } from '../Components/GlobalState';
+import { useTranslation } from 'react-i18next';
+import {ecommerceAPI} from "../API/axios-custom"
+import {useSuccessMsgStore } from "../Global_state/Zustand_Store"
+
+
 
 
 function SignIn() {
   
+let schema = SignInSchema() ;
+
+const { t : translate } = useTranslation();
+
 
 const [togglePass, setTogglePass] = useState(true);
-let navigation = useNavigate() ;
-let {successMessageFunc} = useContext(GlobalStateContext) ; 
+let navigation = useNavigate();
+let {successMessageFunc} = useSuccessMsgStore()
+ 
 let [commonError , setCommonError] = useState("")
 
 
@@ -24,15 +31,12 @@ let [commonError , setCommonError] = useState("")
 
 
 function userLogin (values, { setSubmitting, resetForm , setFieldError  }){
-  axios.post('https://vm.tasawk.net/rest-api/ecommerce/auth/sign-in',  values , {
-    headers: {
-      'Accept-Language': 'ar'
-  }
-  })
+  
+  ecommerceAPI.post('/auth/sign-in',  values )
   .then(response => {
     localStorage.setItem("mosaweq-new-user" , JSON.stringify(response.data.data.api_token))
     setSubmitting(true)
-    toast.success( successMessageFunc("تم تسجيل الدخول بنجاح" , "" , "سيتم الآن توجيهك الى الصفحة الرئيسية" , ""), {
+    toast.success( successMessageFunc(translate("login/loginSuccessMsg") , "" ,translate("redirectToHomePage")  , ""), {
       position: "top-center",
       autoClose: 2500,
       hideProgressBar: false,
@@ -66,19 +70,19 @@ function userLogin (values, { setSubmitting, resetForm , setFieldError  }){
   return (
    <>
      <ToastContainer />
-      <Breadcrumb title="  تسجيل الدخول"/>
+      <Breadcrumb title={translate("breadcrumb/Signin/title")}/>
   <div className="login-section">
     <div className="container">
       <div className="general-form-content">
         <div className="signin-form">
-          <h2 className='general-form-content-h2'>تسجيل دخول</h2>
+          <h2 className='general-form-content-h2'> {translate("breadcrumb/Signin/title")}</h2>
           <Formik
           onSubmit={userLogin}
           initialValues={{
             name : "" , 
             password : ""
           }}
-          validationSchema={signInSchema}
+          validationSchema={schema}
           // validate={validate}
           >
             {({isSubmitting, values, handleChange, handleBlur, errors, touched})=> 
@@ -87,7 +91,7 @@ function userLogin (values, { setSubmitting, resetForm , setFieldError  }){
               <input
               className={`general-input ${ touched.name && errors.name && "input-error"}`}
                type="text" 
-               placeholder='اسم المستخدم'
+               placeholder={translate("usernamePlaceholderText")}
                value={values.name}
                onChange={handleChange}
                onBlur={handleBlur}
@@ -98,7 +102,7 @@ function userLogin (values, { setSubmitting, resetForm , setFieldError  }){
                   <input
                    className={`general-input ${ touched.password && errors.password && "input-error"}`}
                    type={`${togglePass ? "password" : "text"}`} 
-                   placeholder='كلمة المرور' 
+                   placeholder={translate("passwordPlaceholderText")}
                    value={values.password}
                    onChange={handleChange}
                    onBlur={handleBlur}
@@ -109,15 +113,15 @@ function userLogin (values, { setSubmitting, resetForm , setFieldError  }){
                  
                 </div>
                 {errors.password && touched.password && <div className="error">{errors.password}</div>}
-                <div className='text-danger mt-2'>
+                <div className='text-danger commonError mt-2'>
                 {commonError}
                 </div>
-                <Link className="ancor-btn forget-text" to="/ForgetPassword">هل نسيت كلمة المرور؟</Link>
+                <Link className="ancor-btn forget-text" to="/ForgetPassword">{translate("signin/forgetPasswordText")}</Link>
                 <button
                  className='login-btn general-btn ancor-btn'
                  disabled={isSubmitting}
-                 >{!isSubmitting ? "دخول" : <ImSpinner8 size={22} className='spinner' />} </button>
-                <Link to="/register" className='ancor-btn general-btn register-newAcc-btn'>تسجيل حساب جديد</Link>
+                 >{!isSubmitting ? translate("signin/signinBtnText"): <ImSpinner8 size={22} className='spinner' />} </button>
+                <Link to="/register" className='ancor-btn general-btn register-newAcc-btn'> {translate("registerNewAccountText")} </Link>
               </Form>
             )}
           </Formik>

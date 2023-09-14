@@ -12,6 +12,15 @@ footer{
         margin: 0;
         margin-bottom: 22px;
         text-transform: capitalize;
+        text-align: start;
+    }
+}
+.apps{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    a:last-of-type{
+        margin-inline-start: 10px;
     }
 }
 .main-sections-list{
@@ -21,6 +30,7 @@ footer{
     max-height: 255px;
 }
 .details-text{
+    text-align: start;
     font-size: 14px;
     line-height: 24px;
     color: #664229;
@@ -31,22 +41,28 @@ footer{
 }
 .footer-items{
     display: grid;
-    grid-template-columns: 390px 208px  1fr;
+    grid-template-columns: 390px 240px  1fr;
 }
 
 
 
-
+.logo-info {
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+}
 .quick-links {
 ul li {
     font-size: 16px;
     line-height: 32px;
+    text-align: start;
    a{
     font-size: 14px;
     line-height: 28px;
     color: #808080;
     font-weight: 600;
     transition: all linear .2s;
+    text-align: start;
     &:hover{
         color: $second-color;
     }
@@ -65,7 +81,7 @@ ul li {
 .tasawk{
 text-decoration: none;
 display: flex;
-align-items: center;
+align-items: flex-end;
 font-size: 14px;
 color: #808080;
 font-weight: 500;

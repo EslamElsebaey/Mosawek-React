@@ -1,19 +1,37 @@
-import React, {useContext} from 'react'
+import React, {  useEffect , useState} from 'react'
 import {Form, Formik} from 'formik';
-import axios from 'axios';
+import {ecommerceAPI} from "../../API/axios-custom"
 import {ImSpinner8} from 'react-icons/im';
 import {  toast , ToastContainer } from 'react-toastify';
 import Select from 'react-select';
-import {editProfileSchema} from "./../../Components/Schema"
-import { GlobalStateContext } from './../GlobalState';
+import {EditProfileSchema} from "./../../Components/Schema"
+import { useTranslation } from 'react-i18next';
+import {useProfileDataStore , useAvatarStore , useSuccessMsgStore , useZonesStore  , useMembershipListStore , useCitiesStore} from "../../Global_state/Zustand_Store"
+
+
+
 
 
 function EditProfile() {
-   
 
-    let { successMessageFunc ,  setMemberSelected ,profileData , avatar  , membershipList, cityList , setCitySelected  , zoneList , setZoneSelected }
-     = useContext(GlobalStateContext)
-    
+
+
+const { membershipList  } = useMembershipListStore();
+const { profileData } = useProfileDataStore();
+
+let {cityList , getCities   , setCitySelected , citySelected } = useCitiesStore();
+let {zoneList , setZoneSelected  , getZones } = useZonesStore();
+const [memberSelected, setMemberSelected] = useState(null);
+
+
+
+
+let schema = EditProfileSchema();
+
+    let {   avatar   }= useAvatarStore()
+    const { t : translate } = useTranslation();
+
+     const {successMessageFunc} = useSuccessMsgStore()
 
 
     function updateProfile (values, { setSubmitting, resetForm , setFieldError   }){
@@ -27,18 +45,11 @@ function EditProfile() {
                 formData.append(key ,allValues[key] )
              })
         }
-       
-        axios.post('https://vm.tasawk.net/rest-api/ecommerce/profile' ,formData , {
-          headers: {
-            'Accept-Language': 'ar',
-            "X-Api-Token" : JSON.parse(localStorage.getItem("mosaweq-new-user")) ,
-            "Accept" : " application/json"
-        }
-        } )
+        ecommerceAPI.post('/profile' ,formData ,)
         .then(response => {
             console.log(response)
           setSubmitting(false)
-          toast.success( successMessageFunc(" تم تحديث الحساب بنجاح " , "" , "" , "d-none"), {
+          toast.success( successMessageFunc(translate("editProfile/updateProfileSuccessMsg") , "" , "" , "d-none"), {
             position: "top-center",
             autoClose: 2500,
             hideProgressBar: false,
@@ -68,17 +79,27 @@ function EditProfile() {
 
 
 
+
+
+
+  useEffect(()=>{
+    
+    getCities(1)
+    if(citySelected){
+        getZones(1 , citySelected.value );
+      }
+  } , [citySelected])
+
       
     return (
         <>
          <ToastContainer />
         <div className="section-cont editProfile-sec-cont">
-            <h2> تعديل بيانات الحساب</h2>
+            <h2> {translate("editProfile/title")} </h2>
             <div className="edit-profile-cont">
                 <Formik
                     onSubmit={updateProfile}
                     initialValues={{
-                        // avatar: avatar,
                         membership_id: profileData.membership.id ,
                         full_name: profileData.full_name,
                         phone: profileData.phone,
@@ -88,7 +109,7 @@ function EditProfile() {
                         devices_token: "211212121"
                     }}
                     // validate={validate}
-                    validationSchema={editProfileSchema}
+                    validationSchema={schema}
                 >
                     {({
                           isSubmitting,
@@ -103,7 +124,7 @@ function EditProfile() {
                         <Form className='myform' >
                             <div className="general-input-div">
                                 <label className="myLabel" htmlFor="">
-                                    نوع العضوية
+                                {translate("general/membershipTypeText")}
                                 </label>
                                 <Select
                                     className={`general-input 
@@ -114,19 +135,16 @@ function EditProfile() {
                                         setMemberSelected(memberSelected)
                                     }
                                     }
-
                                     placeholder={profileData.membership.title}
                                     // value={regionSelectedOption}
                                     options={membershipList}
                                 />
-
-
                                 {errors.membership_id && touched.membership_id &&
                                     <div className="error">{errors.membership_id}</div>}
                             </div>
                             <div className="general-input-div">
                                 <label className="myLabel" htmlFor="">
-                                    الاسم بالكامل
+                                {translate("fullNamePlaceholderText")}
                                 </label>
                                 <div>
                                     <input
@@ -134,7 +152,6 @@ function EditProfile() {
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                         value={values.full_name}
-                                        // value={profileData.full_name}
                                         className={`general-input ${errors.full_name && touched.full_name && "input-error"}`}
                                         type="tel"
                                     />
@@ -145,7 +162,7 @@ function EditProfile() {
                             </div>
                             <div className="general-input-div">
                                 <label className="myLabel" htmlFor="">
-                                    رقم الجوال
+                                {translate("phoneNumberPlceholderText")}
                                 </label>
                                 <div className="number-holder-div">
                                     <input
@@ -164,7 +181,7 @@ function EditProfile() {
                             </div>
                             <div className="general-input-div">
                                 <label className="myLabel" htmlFor="">
-                                    البريد الإلكتروني
+                                {translate("emailPlaceholderText")}
                                 </label>
                                 <div>
                                     <input
@@ -181,7 +198,7 @@ function EditProfile() {
                             </div>
                             <div className="general-input-div select-general-input">
                                 <label className="myLabel" htmlFor="">
-                                    المدينة
+                                {translate("cityPlaceholderText")}
                                 </label>
                                 <Select
                                     className={`general-input ${touched.city_id && errors.city_id && "input-error"}`}
@@ -199,7 +216,7 @@ function EditProfile() {
                             </div>
                             <div className="general-input-div select-general-input">
                                 <label className="myLabel" htmlFor="">
-                                المنطقة
+                                {translate("zonePlaceholderText")}
                                 </label>
                                  <Select
                                     className={`general-input ${ touched.zone_id && errors.zone_id && "input-error"}`}
@@ -218,7 +235,7 @@ function EditProfile() {
                             </div>
                             <div className='submitBtn-holder'>
                                 <button type='submit' disabled={isSubmitting} className='ancor-btn'>
-                                    {!isSubmitting ? "حفظ التغييرات" :
+                                    {!isSubmitting ? translate("editProfile/saveChanges") :
                                         <ImSpinner8 size={22} className='spinner'/>}
                                 </button>
                             </div>
